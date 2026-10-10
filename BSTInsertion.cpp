@@ -41,9 +41,28 @@ void inOrder(Node *root){
     inOrder(root->right);
 }
 
+bool search(Node *root, int num){
+    if(root == nullptr) return false;
+    if(root->data == num){
+        return true;
+    }else if(num < root->data){
+        return search(root->left, num);
+    }else{
+        return search(root->right, num);
+    }
+}
+int mini=INT_MAX, maxi=INT_MIN;
+
+int minMax(Node *root){
+    if(!root){
+        return 0;
+    }
+    
+}
 
 int main(){
     Node *root = nullptr;
+
     int n, x;
     cout << "Enter number of nodes: ";
     cin >> n;
@@ -53,7 +72,15 @@ int main(){
         root = insert(root, x);
     }
 
+    cout << "Inorder:" << endl;
     inOrder(root);
+
+    int num;
+    cout << "Enter number to search: "<< endl;
+    cin>>num;
+    bool a = search(root,num);
+    if(a) cout<<"TRUE";
+    else cout << "FALSE";
     return 0;
 
 }
